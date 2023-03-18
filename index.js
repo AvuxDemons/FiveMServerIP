@@ -18,17 +18,19 @@ app.get("/", (req, res) => {
 
 app.post("/", async (req, res) => {
     let { url } = req.body;
-    let response;
+    let response, status = false;
 
     let request = `https://cfx.re/join/${url.replace('https://', '').replace('cfx.re/join/', '')}`
     try {
-        response = (await axios.get(request)).headers["x-citizenfx-url"].replace("https://", "").replace("http://", "").replace("/", "");
+        response = (await axios.get(request)).headers["x-citizenfx-url"].replace("https://", "").replace("http://", "").replaceAll("/", "");
+        status = true
     } catch (error) {
-        console.log(error)
+        response = 'Invalid or server might be offline!'
     }
 
     res.status(200).render('index', {
-        response
+        response,
+        status
     });
 });
 
@@ -40,12 +42,12 @@ app.get("/info/:server", async (req, res) => {
     const fivem = new FiveM.Server(ip, port, 'ERROR')
     const [serverStatus, serverDetail] = await Promise.all([fivem.getServerStatus(), fivem.getServer()])
 
-    res.status(200).render('info', {
-        serverStatus,
-        serverDetail
-    });;
+    // res.status(200).render('info', {
+    //     serverStatus,
+    //     serverDetail
+    // });
     
-    // res.json(serverDetail)
+    res.json(serverDetail)
 });
 
 const port = 3000;

@@ -31,8 +31,8 @@
                         </div>
                     </div>
                     <div class="flex gap-2 text-center justify-center">
-                        <%- typeof response != 'undefined' ? `<a href="/info/${response}" class="w-10/12 md:w-72 my-2 py-2 text-white bg-zinc-900 rounded-md font-medium">${response}</a>`: `<a class="w-10/12 md:w-72 my-2 py-2 text-white bg-zinc-900 rounded-md font-medium" href="#">Invalid or server might be offline!</a>` %>
-                        <%- typeof response != 'undefined' ? `<a class="w-2/12 md:w-14" href="https://${response}"><p class="my-2 py-2 text-white bg-zinc-900 rounded-md font-medium">🐌</p> </a>` : `<a class="w-2/12 md:w-14" href="#"><p class="my-2 py-2 text-white bg-zinc-900 rounded-md font-medium">❌</p> </a>` %>
+                        <%- typeof response != 'undefined' ? `<a href="${status === true ? '/info/' + response : '#'}" class="w-10/12 md:w-72 my-2 py-2 text-white bg-zinc-900 rounded-md font-medium hover:bg-zinc-600 transition-colors duration-200">${response}</a>`: '' %>
+                        <%- typeof response != 'undefined' ? `<a class="w-2/12 md:w-14" href="${status === true ? 'https://' + response : '#'}"><p class="my-2 py-2 text-white bg-zinc-900 rounded-md font-medium hover:bg-zinc-600 transition-colors duration-200">${status === true ? '🐌' : '❌'}</p> </a>` : '' %>
                     </div>
                 </form>
             </div>
