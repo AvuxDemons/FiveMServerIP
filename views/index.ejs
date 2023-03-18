@@ -18,21 +18,21 @@
                             src="https://forum.cfx.re/uploads/default/original/4X/f/7/b/f7bd789d9d3ad55ff91dc57979e485e99e1a5273.png">
 
                         <p class="mt-3 lg:text-lg text-white">
-                            CFX.re FiveM Server IP & Port Checker
+                            CFX.re FiveM Server Information
                         </p>
 
                         <div class="mt-5 flex flex-col space-y-3 sm:-mx-2 sm:flex-row sm:justify-center sm:space-y-0">
                             <input id="url" name="url" type="text"
                                 class="rounded-md border border-transparent bg-gray-200/40 px-4 py-2 text-white placeholder-black/50 text-center backdrop-blur-sm focus:border-gray-400 focus:outline-none focus:ring focus:ring-zinc-900 focus:ring-opacity-40 sm:mx-2"
-                                placeholder="'cfx.re/join/xxx' or 'xxx'" />
+                                placeholder="'cfx.re/join/xxx' or 'xxx'"/>
 
                             <button
                                 class="transform rounded-md bg-zinc-900 px-8 py-2 text-sm font-medium capitalize tracking-wide text-white transition-colors duration-200 hover:bg-zinc-600 focus:bg-zinc-600 focus:outline-none sm:mx-2">SUBMIT</button>
                         </div>
                     </div>
                     <div class="flex gap-2 text-center justify-center">
-                        <%- typeof response != 'undefined' ? `<p class="w-10/12 md:w-72 my-2 py-2 text-white bg-zinc-900 rounded-md font-medium">${response}</p>`: '' %>
-                        <%- typeof response != 'undefined' ? `<a class="w-2/12 md:w-14" href="https://${response.replace('Success - ','')}/info.json"> <p class="my-2 py-2 text-white bg-zinc-900 rounded-md font-medium">🔗</p> </a>`: '' %>
+                        <%- typeof response != 'undefined' ? `<a href="/info/${response}" class="w-10/12 md:w-72 my-2 py-2 text-white bg-zinc-900 rounded-md font-medium">${response}</a>`: `<a class="w-10/12 md:w-72 my-2 py-2 text-white bg-zinc-900 rounded-md font-medium" href="#">Invalid or server might be offline!</a>` %>
+                        <%- typeof response != 'undefined' ? `<a class="w-2/12 md:w-14" href="https://${response}"><p class="my-2 py-2 text-white bg-zinc-900 rounded-md font-medium">🐌</p> </a>` : `<a class="w-2/12 md:w-14" href="#"><p class="my-2 py-2 text-white bg-zinc-900 rounded-md font-medium">❌</p> </a>` %>
                     </div>
                 </form>
             </div>
